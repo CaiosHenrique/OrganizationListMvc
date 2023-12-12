@@ -1,0 +1,28 @@
+@model OrganizationListMvc.Models.TarefaViewModel
+@{
+    ViewBag.Title = "Detalhes da Dieta";
+}
+<h2>Detalhes da Dieta</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.IdTarefa)</dt>
+        <dd>@Html.DisplayFor(model => model.IdTarefa)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.DescTarefa)</dt>
+        <dd>@Html.DisplayFor(model => model.DescTarefa)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.StatusTarefa)</dt>
+        <dd>@Html.DisplayFor(model => model.StatusTarefa)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.DataCriacao)</dt>
+        <dd>@Html.DisplayFor(model => model.DataCriacao)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.NomeTarefa)</dt>
+        <dd>@Html.DisplayFor(model => model.NomeTarefa)</dd>
+    </dt>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.IdTarefa})
+    @Html.ActionLink("Retornar", "Index")
+</p>

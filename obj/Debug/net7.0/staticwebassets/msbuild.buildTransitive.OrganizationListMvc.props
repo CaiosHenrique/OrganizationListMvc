@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\OrganizationListMvc.props" />
+</Project>
