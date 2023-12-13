@@ -2,6 +2,18 @@
     ViewData["Title"] = "Home Page";
 }
 
+@if (@TempData["Mensagem"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Mensagem"]</div>
+}
+<!--Configuração para exibir mensagem de erro -->
+@if (@TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["MensagemErro"]</div>
+}
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>

@@ -11,25 +11,26 @@ using OrganizationListMvc.Models;
 namespace OrganizationListMvc.Controllers
 {
 
-        public class OrganizationsController : Controller
-        {
-            public string uriBase = "http://Listafofinha.somee.com/Tarefas/";
-            public HttpClient httpClient = new HttpClient();
+    public class TarefasController : Controller
+    {
+        public string uriBase = "http://Listafofinha.somee.com/Organization-List-main/Tarefas/";
+        //public HttpClient httpClient = new HttpClient();
 
-            [HttpGet]
-        public ActionResult IndexTarefas()
+        //[HttpGet]
+        /*public ActionResult IndexTarefas()
         {
             return View("IndexTarefas");
-        }
+        }*/
+
         [HttpGet]
-        public async Task<ActionResult> IndexAsync()
+        public async Task<ActionResult> IndexTarefasAsync()
         {
             try
             {
                 string uriComplementar = "GetAll";
                 HttpClient httpClient = new HttpClient();
-                string token = HttpContext.Session.GetString("SessionTokenUsuario");
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                //string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 HttpResponseMessage response = await httpClient.GetAsync(uriBase + uriComplementar);
                 string serialized = await response.Content.ReadAsStringAsync();
@@ -48,10 +49,11 @@ namespace OrganizationListMvc.Controllers
             {
 
                 TempData["MensagemErro"] = ex.Message;
-                return RedirectToAction("IndexTarefas");
+                return RedirectToAction("Index", "Home");
             }
         }
-[HttpPost]
+
+        [HttpPost]
         public async Task<ActionResult> CadastrarAsync(TarefaViewModel p)
         {
             try
@@ -79,7 +81,7 @@ namespace OrganizationListMvc.Controllers
                 return RedirectToAction("Create");
             }
         }
-[HttpGet]
+        [HttpGet]
         public async Task<ActionResult> DetalhesAsync(int? IdTarefa)
         {
             try
@@ -134,7 +136,8 @@ namespace OrganizationListMvc.Controllers
                 return RedirectToAction("IndexTarefas");
             }
         }
-[HttpPost]
+
+        [HttpPost]
         public async Task<ActionResult> EditarAsync(TarefaViewModel p)
         {
             try
@@ -166,7 +169,8 @@ namespace OrganizationListMvc.Controllers
                 return RedirectToAction("IndexTarefas");
             }
         }
-[HttpGet]
+
+        [HttpGet]
         public async Task<ActionResult> DeleteAsync(int IdTarefa)
         {
             try
@@ -193,9 +197,10 @@ namespace OrganizationListMvc.Controllers
                 return RedirectToAction("IndexTarefas");
 
             }
+        }
 
-        }
-        
-        }
+
+
+    }
 
 }
